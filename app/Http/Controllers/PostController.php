@@ -35,13 +35,13 @@ class PostController extends Controller
 
             try {
                 $client->putObject([
-                    'Bucket' => env('OBS_BUCKET'),
+                    'Bucket' => 'commu',
                     'Key'    => $fileName,
                     'Body'   => fopen($file->getPathname(), 'rb'),
                 ]);
 
                 $signedUrl = $client->createSignedUrl([
-                    'Bucket' => env('OBS_BUCKET'),
+                    'Bucket' => 'commu',
                     'Key'    => $fileName,
                     'Method' => 'GET',
                     'Expires' => 3600 * 2,
